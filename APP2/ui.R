@@ -8,5 +8,5 @@ shinyUI(fluidPage(
            sliderInput('interest',label='range of interest', min = 0, max = 100,value=c(0,100))
           
 
-),mainPanel())
+),mainPanel(position='right',textOutput('text1'),textOutput('text2')))
 ))
