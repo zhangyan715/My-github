@@ -1,29 +1,31 @@
-
 shinyUI(fluidPage(
   titlePanel('Abnormal Observation'),
   sidebarLayout(
-    sidebarPanel(
-                 fluidRow(
-                   column(6,
-
-                          selectInput('in4', 'ID prefix',choices=idspl[,1],selected = T )
-                   ),
-                   column(4,
-
-                          selectInput('in5', 'ID infix', choices = idspl[,2],selected = T )
-                   ),
-                   column(6,
-
-                          selectInput('in6', 'ID postfix',choices = idspl[,3],selected = T )
-                   )),
-                 dateRangeInput('Range',label ='Time period',min = as.Date('2013-01-01'),max = as.Date('2015-02-04'),start =as.Date('2013-01-01') ,end =as.Date('2015-02-04') )
+    sidebarPanel(width=4,
+      h3('Please Choose your ID'),
+      tags$br(),
+      selectizeInput('ID1','ID prefix',choices=list('4'=unique(idspl$id.1[grepl(idspl[,1],pattern = '^4',perl = T)]),'8'=unique(idspl$id.1[grepl(idspl[,1],pattern = '^8',perl = T)])),selected=T),
+      selectizeInput('ID2','Id infix',choices=unique(idspl$id.2)),
+      selectizeInput('ID3','Id postfix',choices=unique(idspl$id.3)),
+      h4('Your ID is:'),
+      tags$span(strong(textOutput('text')),style='color:red'),
+      tags$br(),
+    dateRangeInput('date','Date Range',start =range(user[,5])[1],end=range(user[,5])[2])
     ),
+    
     mainPanel(
-      plotOutput('map')
-    ))
-
-))
-
+      h2('PLOT',align='center'),
+     
+       
+               plotOutput('plot1'),
+               #sliderInput('alpha',label = 'Opacity',min = 0,max = 1,value = 0.5),
+               #sliderInput('size',label = 'Size',min = 0,max = 5,value = 1),
+      
+               plotOutput('plot2')
+        
+      
+      ))
+  ))
 
 
 
