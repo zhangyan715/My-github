@@ -10,21 +10,22 @@ shinyUI(fluidPage(
       h4('Your ID is:'),
       tags$span(strong(textOutput('text')),style='color:red'),
       tags$br(),
-    dateRangeInput('date','Date Range',start =range(user[,5])[1],end=range(user[,5])[2])
+    dateRangeInput('date','Date Range',start =range(user[,5])[1],end=range(user[,5])[2]),
+    tags$strong('By:'),
+    radioButtons('d','',choices=list('1 week'=1,'2 weeks'=2,'3 weeks'=3,'4 weeks'=4,'5 weeks'=5,'6 weeks'=6,'7 weeks'=7,'8 weeks'=8,'9 weeks'=9,'10 weeks'=10,'11 weeks'=11,'12 weeks'=12),selected=1)
     ),
-    
     mainPanel(
-      h2('PLOT',align='center'),
-     
-       
-               plotOutput('plot1'),
+      tags$img(src='labixiaoxin.jpg',height=120),
+      h2('Graph',align='center'),
+     tabsetPanel(
+               tabPanel('User97',plotOutput('plot1')),
                #sliderInput('alpha',label = 'Opacity',min = 0,max = 1,value = 0.5),
                #sliderInput('size',label = 'Size',min = 0,max = 5,value = 1),
-      
-               plotOutput('plot2')
-        
-      
-      ))
+               tabPanel('lost97',  h5(strong(span('Green line',style='color:green')) ,'is SALE_Q', ',Point=LOST_Q'),plotOutput('plot2'))
+       )
+     )
+    
+     ) 
   ))
 
 
