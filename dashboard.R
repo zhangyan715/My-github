@@ -11,8 +11,8 @@ header <- dashboardHeader(title = 'Abnormal Observation',
                           )
 sidebar <- dashboardSidebar(
   sidebarMenu(
-    menuItem('User',tabName = 'u',badgeLabel = 'View',badgeColor = 'green',icon = icon('th'),newtab = T),
-    menuItem('Lost',tabName = 'l',badgeLabel = 'View',badgeColor = 'green',icon = icon('th'),newtab = T)
+    menuItem('User',tabName = 'u',badgeLabel = 'View',badgeColor = 'green',icon = icon('dashboard'),newtab = T),
+    menuItem('Lost',tabName = 'l',badgeLabel = 'View',badgeColor = 'green',icon = icon('dashboard'),newtab = T)
     ),
   strong(h5('Please Choose your ID')),
   tags$br(),
